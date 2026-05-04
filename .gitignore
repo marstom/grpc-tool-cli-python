@@ -6,6 +6,11 @@ dist/
 wheels/
 *.egg-info
 zego/
+grpc/
+scalapb/
+vars/
 
+/responses/
+/requests/
 # Virtual environments
 .venv

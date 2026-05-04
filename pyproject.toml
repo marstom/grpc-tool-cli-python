@@ -7,8 +7,25 @@ requires-python = ">=3.13"
 dependencies = [
     "grpcio>=1.80.0",
     "grpcio-tools>=1.80.0",
+    "icecream>=2.2.0",
     "ipdb>=0.13.13",
     "ipython>=9.13.0",
+    "jmespath>=1.1.0",
     "protobuf>=6.33.6",
+    "pyyaml>=6.0.3",
     "typer>=0.25.1",
 ]
+
+[project.scripts]
+cli = "cli:app"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["cli", "lib"]
+
+[tool.setuptools.packages.find]
+include = ["zego*", "scalapb*"]
+exclude = ["vars*", "requests*", "responses*"]

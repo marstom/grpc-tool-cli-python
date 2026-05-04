@@ -1,0 +1,24 @@
+{
+    "folder-color.pathColors": [
+        {
+            "folderPath": "grpcurl_tool/responses/fin1805/",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_00afff"
+        },
+        {
+            "folderPath": "grpcurl_tool/requests/",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_d78700"
+        },
+        {
+            "folderPath": "grpcurl_tool/requests/fin1805/",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_af8700"
+        },
+        {
+            "folderPath": "grpcurl_tool/responses/",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_005fd7"
+        }
+    ]
+}

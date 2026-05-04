@@ -1,0 +1,16 @@
+proto: messages
+path_to_proto_file: /Users/tomaszmarszalek/dev/python/protobuf_course_udemy/udemy_protobuf_dotnet/_tutorials/authentication_tutorial/messages.proto
+path_to_proto_root: /Users/tomaszmarszalek/dev/python/protobuf_course_udemy/udemy_protobuf_dotnet/_tutorials/authentication_tutorial/
+#server_detection:
+service: Door
+rpc: SendCommandToDoor
+url: http://0.0.0.0:50055
+dry_run: false
+verbose: true
+var: # variable to save
+  - a|.ans
+vars_file: "vars/varss.json"
+request_body: |
+  {
+    "msg": "Tomek"
+  }

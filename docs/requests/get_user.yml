@@ -1,0 +1,15 @@
+# Example: fetch the user created by create_user.yml.
+# The request body is in a separate JSON file that uses {{user_id}},
+# which create_user.yml saved to vars/vars.json.
+#
+#   uv run cli call-yaml docs/requests/create_user.yml
+#   uv run cli call-yaml docs/requests/get_user.yml
+
+proto: example.users.v1.users
+service: UserService
+rpc: GetUser
+url: http://localhost:50051
+
+# (yaml) relative to this file. The response goes to the matching path
+# under responses/: docs/requests/get_user.json -> docs/responses/get_user.json
+request_file: get_user.json

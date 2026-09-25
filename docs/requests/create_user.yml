@@ -1,0 +1,53 @@
+# Example: create a user and save its id for later requests.
+#
+#   uv run cli proto-from-file docs/requests/create_user.yml   # once, generates ./grpc/
+#   uv run cli example-json    docs/requests/create_user.yml   # print a request skeleton
+#   uv run cli call-yaml       docs/requests/create_user.yml   # make the call
+#
+# Paths marked (yaml) are resolved relative to this file's directory;
+# paths marked (cwd) are resolved relative to where you run the command.
+
+# --- proto generation (used by `proto-from-file`) ---------------------------
+path_to_proto_file: ../protos/example/users/v1/users.proto  # (yaml)
+path_to_proto_root: ../protos                               # (yaml) the -I root
+# python_out: ../../grpc     # (yaml) default: ./grpc (cwd)
+# import_paths:              # (yaml) extra -I dirs for imported .proto files
+#   - ../../third_party/protos
+
+# --- call target -------------------------------------------------------------
+# Dotted module path of the generated code, without the _pb2 suffix.
+# It is the .proto path relative to path_to_proto_root, with dots.
+proto: example.users.v1.users
+service: UserService            # service name, without "Stub"
+rpc: CreateUser
+# request_type: CreateUserRequest   # optional; read from the RPC definition by default
+# proto_import_path: grpc           # (cwd) where the generated _pb2 files live; default: grpc
+
+# http://  -> plaintext channel
+# https:// -> TLS channel
+# no scheme (host:port) -> TLS channel
+url: http://localhost:50051
+
+# --- request -----------------------------------------------------------------
+# Inline JSON body. With request_body, the response is saved next to the
+# YAML under responses/: docs/requests/create_user.yml -> docs/responses/create_user.json
+request_body: |
+  {
+    "name": "Ada Lovelace",
+    "email": "ada@example.com",
+    "age": 36,
+    "role": "ROLE_ADMIN",
+    "tags": ["beta", "internal"]
+  }
+
+# --- variables ---------------------------------------------------------------
+# name|jmespath: pull values out of the response and store them in vars_file.
+# The leading "." is optional (jq style).
+var:
+  - user_id|.user.id
+  - user_email|.user.email
+vars_file: vars/vars.json   # (cwd) default: vars/vars.json
+
+# --- flags -------------------------------------------------------------------
+dry_run: false   # true: skip the RPC and re-run var extraction on the saved response
+verbose: false   # true: print the response

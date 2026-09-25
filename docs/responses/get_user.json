@@ -1,0 +1,13 @@
+{
+  "user": {
+    "id": "87084000-6742-4cbd-b257-37c14777fd1e",
+    "name": "Ada Lovelace",
+    "email": "ada@example.com",
+    "age": 36,
+    "role": "ROLE_ADMIN",
+    "tags": [
+      "beta",
+      "internal"
+    ]
+  }
+}

@@ -5,7 +5,7 @@ A command-line tool for making gRPC calls with support for protobuf, request tem
 ## Installation
 
 ```bash
-pip install -e .
+uv sync
 ```
 
 ## Quick Start
